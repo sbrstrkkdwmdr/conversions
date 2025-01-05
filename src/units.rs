@@ -1,7 +1,19 @@
-use crate::types;
+use crate::types::{self};
 use std::collections::HashMap;
 
-fn getUnitNames() -> HashMap<String, Vec<String>> {
+pub mod angle;
+pub mod area;
+pub mod distance;
+pub mod energy;
+pub mod mass;
+pub mod power;
+pub mod pressure;
+pub mod speed;
+pub mod temperature;
+pub mod time;
+pub mod volume;
+
+fn get_unit_names() -> HashMap<String, Vec<String>> {
     let t: HashMap<String, Vec<String>> = HashMap::from([
         (
             "arbitrary".to_string(),
@@ -460,77 +472,99 @@ fn getUnitNames() -> HashMap<String, Vec<String>> {
     return t;
 }
 
-fn getValues(key: String) -> Vec<String> {
-    if let Some(values) = getUnitNames().get(&key) {
+fn get_values(key: String) -> Vec<String> {
+    if let Some(values) = get_unit_names().get(&key) {
         return values.to_vec();
     } else {
         return Vec::new();
     }
 }
 
-fn getUnit(key: String) -> types::Unit {
-    let foo: Vec<String> = getUnitNames().values().cloned().collect()::Vec<String>;
-    
+pub fn get_unit(key: String, second_key: String) -> (types::Unit, types::Conversion) {
+    let unit_names: Vec<Vec<String>> = get_unit_names().values().cloned().collect::<Vec<_>>();
+    let mut unit_list: Vec<types::Unit> = vec![types::template_unit()];
+    for names in unit_names {
+        if names.contains(&key) {
+            let x = &names[0];
+            unit_list = get_unit_via_list(&key);
+        }
+    }
+    for unit in unit_list {
+        let test = get_calculation(&second_key, &unit);
+        if test.name != "TEMPLATE".to_string() {
+            return (unit, test);
+        }
+    }
+
+    return (types::template_unit(), types::template_conversion());
 }
 
-fn temperature() -> Vec<types::Unit> {
-    return vec![
-        types::Unit {
-            name: "Celsius".to_string(),
-            names: getValues("temp_c".to_string()),
-            can_use_si: false,
-            conversions: vec![
-                types::Conversion {
-                    name: "Fahrenheit".to_string(),
-                    names: getValues("temp_f".to_string()),
-                    text: "x*9/5+32".to_string(),
-                    calc: |x| x * 9.0 / 5.0 + 32.0,
-                },
-                types::Conversion {
-                    name: "Kelvin".to_string(),
-                    names: getValues("temp_k".to_string()),
-                    text: "x+273.15".to_string(),
-                    calc: |x| x + 273.15,
-                },
-            ],
-        },
-        types::Unit {
-            name: "Fahrenheit".to_string(),
-            names: getValues("temp_f".to_string()),
-            can_use_si: false,
-            conversions: vec![
-                types::Conversion {
-                    name: "Celsius".to_string(),
-                    names: getValues("temp_c".to_string()),
-                    text: "((x)-32)*5/9".to_string(),
-                    calc: |x| (x - 32.0) * 5.0 / 9.0,
-                },
-                types::Conversion {
-                    name: "Kelvin".to_string(),
-                    names: getValues("temp_k".to_string()),
-                    text: "((x)-32)*5/9 + 273.15".to_string(),
-                    calc: |x| (x - 32.0) * 5.0 / 9.0 + 273.15,
-                },
-            ],
-        },
-        types::Unit {
-            name: "Kelvin".to_string(),
-            names: getValues("temp_k".to_string()),
-            can_use_si: false,
-            conversions: vec![
-                types::Conversion {
-                    name: "Celsius".to_string(),
-                    names: getValues("temp_c".to_string()),
-                    text: "x-273.15".to_string(),
-                    calc: |x| x - 273.15,
-                },
-                types::Conversion {
-                    name: "Fahrenheit".to_string(),
-                    names: getValues("temp_f".to_string()),
-                    text: "(x-273.15)*9/5+32".to_string(),
-                    calc: |x| (x - 273.15) * 9.0 / 5.0 + 32.0,
-                },
-            ],
-        },
-    ];
+fn get_unit_second(key: &String, units: Vec<types::Unit>) -> types::Unit {
+    for unit in units {
+        if unit.names.contains(&key) {
+            return unit;
+        }
+    }
+    return types::template_unit();
+}
+
+fn get_unit_via_list(key: &String) -> Vec<types::Unit> {
+    let mut foo: Vec<types::Unit> = Vec::new();
+    let bar = "TEMPLATE".to_string();
+    let angle = get_unit_second(key, angle::units());
+    let area = get_unit_second(key, area::units());
+    let distance = get_unit_second(key, distance::units());
+    let energy = get_unit_second(key, energy::units());
+    let mass = get_unit_second(key, mass::units());
+    let power = get_unit_second(key, power::units());
+    let pressure = get_unit_second(key, pressure::units());
+    let speed = get_unit_second(key, speed::units());
+    let temperature = get_unit_second(key, temperature::units());
+    let time = get_unit_second(key, time::units());
+    let volume = get_unit_second(key, volume::units());
+
+    if angle.name != bar {
+        foo.push(angle);
+    }
+    if area.name != bar {
+        foo.push(area);
+    }
+    if distance.name != bar {
+        foo.push(distance);
+    }
+    if energy.name != bar {
+        foo.push(energy);
+    }
+    if mass.name != bar {
+        foo.push(mass);
+    }
+    if power.name != bar {
+        foo.push(power);
+    }
+    if pressure.name != bar {
+        foo.push(pressure);
+    }
+    if speed.name != bar {
+        foo.push(speed);
+    }
+    if temperature.name != bar {
+        foo.push(temperature);
+    }
+    if time.name != bar {
+        foo.push(time);
+    }
+    if volume.name != bar {
+        foo.push(volume);
+    }
+    return foo;
+}
+
+fn get_calculation(key: &String, unit: &types::Unit) -> types::Conversion {
+    let mut bar = &unit.conversions;
+    for conversion in bar {
+        if conversion.names.contains(&key) {
+            return conversion.clone();
+        }
+    }
+    return types::template_conversion();
 }
