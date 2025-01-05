@@ -31,3 +31,9 @@ pub fn template_conversion() -> Conversion {
         calc: |x| x,
     };
 }
+
+pub struct Prefix {
+    pub prefix: String,
+    pub name: String,
+    pub value: f32,
+}

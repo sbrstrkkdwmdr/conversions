@@ -568,3 +568,7 @@ fn get_calculation(key: &String, unit: &types::Unit) -> types::Conversion {
     }
     return types::template_conversion();
 }
+
+pub fn valid_key(key: &String) -> bool {
+    return get_unit_names().contains_key(key);
+}
