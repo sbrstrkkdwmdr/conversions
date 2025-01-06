@@ -6,6 +6,8 @@ Is mostly a rust port of [this file](https://github.com/sbrstrkkdwmdr/sbrbot/blo
 
 Some very large units (eg. light years) lose precision when converting from imperial units as they are converted to metric units first
 
+months have a value of 30.437 days and years are 365.25 days
+
 ### compiling
 
 `rustc src/main.rs`
@@ -14,16 +16,16 @@ Some very large units (eg. light years) lose precision when converting from impe
 
 ### Available conversions
 
-| Type        | Units                                   |
-| ----------- | --------------------------------------- |
-| Angle       | xyz                                     |
-| Area        | xyz                                     |
-| Distance    | Inch, Foot, Metre, Mile, AU, LY, Parsec |
-| Rnergy      | xyz                                     |
-| Mass        | xyz                                     |
-| Power       | xyz                                     |
-| Pressure    | xyz                                     |
-| Speed       | xyz                                     |
-| Temperature | Celsius, Fahrenheit, Kelvin             |
-| Time        | xyz                                     |
-| Volume      | xyz                                     |
+| Type        | Units                                                                                                |
+| ----------- | ---------------------------------------------------------------------------------------------------- |
+| Angle       | xyz                                                                                                  |
+| Area        | xyz                                                                                                  |
+| Distance    | Inch, Foot, Metre, Mile, AU, LY, Parsec                                                              |
+| Rnergy      | xyz                                                                                                  |
+| Mass        | xyz                                                                                                  |
+| Power       | xyz                                                                                                  |
+| Pressure    | xyz                                                                                                  |
+| Speed       | xyz                                                                                                  |
+| Temperature | Celsius, Fahrenheit, Kelvin                                                                          |
+| Time        | second, minute, hour, day, week, fortnight, month, quarintine, year, decade, century, megaannum, eon |
+| Volume      | xyz                                                                                                  |

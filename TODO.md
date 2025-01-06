@@ -1,5 +1,6 @@
 # TODO
 
+- [ ] simplify some equations
 - [ ] SI prefix conversions
 - [ ] angle
 - [ ] area
