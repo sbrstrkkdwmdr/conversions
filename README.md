@@ -25,7 +25,7 @@ months have a value of 30.437 days and years are 365.25 days
 | Mass        | Gram, Ounce, Pound, Stone, US Ton, Metric Tonne                                                        |
 | Power       | Erg, Watt, Decibel-milliwatt, foot-pounds per minute, Calories per second, Horse power, BTU per second |
 | Pressure    | Pascal, mmHg, PSI, Bar, Standard Atmosphere                                                            |
-| Speed       | xyz                                                                                                    |
+| Speed       | km/h, mp/h, kt, m/s, Light                                                                             |
 | Temperature | Celsius, Fahrenheit, Kelvin                                                                            |
 | Time        | Second, Minute, Hour, Day, Week, Fortnight, Month, Quarantine, Year, Decade, Century, Megaannum, Eon   |
 | Volume      | Teaspoon, Tablespoon, Fluid Ounce, Cup, Pint, Litre, Gallon, Cubic Metre                               |
