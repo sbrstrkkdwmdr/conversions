@@ -16,16 +16,6 @@ pub mod volume;
 fn get_unit_names() -> HashMap<String, Vec<String>> {
     let t: HashMap<String, Vec<String>> = HashMap::from([
         (
-            "arbitrary".to_string(),
-            vec![
-                String::from("Arbitrary units"),
-                String::from("idk"),
-                String::from("wtf"),
-                String::from("???"),
-                String::from("?"),
-            ],
-        ),
-        (
             "temp_c".to_string(),
             vec![
                 String::from("Celsius"),
@@ -42,6 +32,7 @@ fn get_unit_names() -> HashMap<String, Vec<String>> {
                 String::from("Fahrenheit"),
                 String::from("℉"),
                 String::from("°F"),
+                String::from("F"),
                 String::from("F"),
             ],
         ),
@@ -484,12 +475,16 @@ pub fn get_unit(key: String, second_key: String) -> (types::Unit, types::Convers
     let unit_names: Vec<Vec<String>> = get_unit_names().values().cloned().collect::<Vec<_>>();
     let mut unit_list: Vec<types::Unit> = vec![types::template_unit()];
     for names in unit_names {
-        if names.contains(&key) {
-            let x = &names[0];
-            unit_list = get_unit_via_list(&key);
+        for name in &names {
+            if &name.to_lowercase() == &key.to_lowercase() {
+                // let x: &String = &names[0];
+                unit_list = get_unit_via_list(&key);
+            }
         }
     }
     for unit in unit_list {
+        print!("{}", "finding conversions for: ");
+        println!("{}", unit.name);
         let test = get_calculation(&second_key, &unit);
         if test.name != "TEMPLATE".to_string() {
             return (unit, test);
@@ -501,8 +496,10 @@ pub fn get_unit(key: String, second_key: String) -> (types::Unit, types::Convers
 
 fn get_unit_second(key: &String, units: Vec<types::Unit>) -> types::Unit {
     for unit in units {
-        if unit.names.contains(&key) {
-            return unit;
+        for name in &unit.names {
+            if &name.to_lowercase() == &key.to_lowercase() {
+                return unit;
+            }
         }
     }
     return types::template_unit();
@@ -560,15 +557,27 @@ fn get_unit_via_list(key: &String) -> Vec<types::Unit> {
 }
 
 fn get_calculation(key: &String, unit: &types::Unit) -> types::Conversion {
-    let mut bar = &unit.conversions;
+    let bar = &unit.conversions;
     for conversion in bar {
-        if conversion.names.contains(&key) {
-            return conversion.clone();
+        for name in &conversion.names {
+            if &name.to_lowercase() == &key.to_lowercase() {
+                print!("{}", "found: ");
+                println!("{}", conversion.name);
+                return conversion.clone();
+            }
         }
     }
     return types::template_conversion();
 }
 
 pub fn valid_key(key: &String) -> bool {
-    return get_unit_names().contains_key(key);
+    let foo = get_unit_names().values().cloned().collect::<Vec<_>>();
+    for bar in foo {
+        for haystack in bar {
+            if &haystack.to_lowercase() == &key.to_lowercase() {
+                return true;
+            }
+        }
+    }
+    return false;
 }

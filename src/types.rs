@@ -11,8 +11,8 @@ pub struct Conversion {
     pub names: Vec<String>,
     pub text: String, // a text formatted way of calculating eg. x*2.5
     pub calc: fn(f32) -> f32,
+    pub can_use_si: bool,
 }
-
 
 pub fn template_unit() -> Unit {
     return Unit {
@@ -29,6 +29,7 @@ pub fn template_conversion() -> Conversion {
         names: vec!["TEMPLATE".to_string()],
         text: "x".to_string(),
         calc: |x| x,
+        can_use_si: false,
     };
 }
 

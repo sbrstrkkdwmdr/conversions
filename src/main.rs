@@ -6,26 +6,95 @@ mod units;
 fn main() {
     println!("Hello, world!");
 
-    let foo = convert("test".to_string(), "test2".to_string(), 1.0);
+    let mut key1 = String::new();
+    let mut key2 = String::new();
+    let mut valueString: String = String::new();
+    
+    println!("{}", "\nPlease enter the first unit:");
+    std::io::stdin().read_line(&mut key1).unwrap();
+    println!("{}", "\nPlease enter the second unit:");
+    std::io::stdin().read_line(&mut key2).unwrap();
+    println!("{}", "\nPlease enter the value to convert:");
+    std::io::stdin().read_line(&mut valueString).unwrap();
+
+    
+    let value: f32 = valueString.trim().parse().unwrap();
+
+    key1 = key1.trim().to_string();
+    key2 = key2.trim().to_string();
+
+    println!("{}", "");
+    println!("{}", "");
+
+    if key1 == key2 {
+        println!("{}", "===");
+        println!("{}", "ERROR");
+        println!("{}", "---");
+        println!("{}", "Cannot convert a unit into itself!");
+    } else {
+        let foo = convert(key1, key2, value);
+        println!("{}", "===");
+        println!("{}", foo.2);
+        println!("{}", foo.1);
+        println!("{}", foo.3);
+    }
 }
 
-fn convert(keyOne: String, keyTwo: String, input: f32) -> (bool, f32, String, String) {
-    let k1 = remove_si(keyOne);
-    let k2 = remove_si(keyTwo);
+/**
+ * succeeded, value, title, equation
+ */
+fn convert(key_one: String, key_two: String, input: f32) -> (bool, f32, String, String) {
+    let k1 = remove_si(key_one);
+    let k2: (String, f32) = remove_si(key_two);
 
     if !units::valid_key(&k1.0) {
-        return (false, 0.0, "K1 INVALID".to_string());
+        return (
+            false,
+            0.0,
+            "Invalid Keys".to_string(),
+            "first unit is invalid".to_string(),
+        );
     }
     if !units::valid_key(&k2.0) {
-        return (false, 0.0, "K2 INVALID".to_string());
+        return (
+            false,
+            0.0,
+            "Invalid Keys".to_string(),
+            "second unit is invalid".to_string(),
+        );
     }
 
     let foo = units::get_unit(k1.0, k2.0);
-    return (true, (foo.1.calc)(input), foo.1.text);
+    let mut bar = (foo.1.calc)(input);
+    if foo.0.can_use_si {
+        bar *= k1.1;
+    }
+    if foo.1.can_use_si {
+        bar /= k1.1;
+    }
+    let mut title = (&foo.0.name).to_string();
+    title.push_str(" -> ");
+    title.push_str(&foo.1.name);
+    if foo.0.name == "TEMPLATE" {
+        return (
+            false,
+            (foo.1.calc)(input),
+            "Invalid Conversion".to_string(),
+            "Could not find conversion for k1".to_string(),
+        );
+    }
+    if foo.1.name == "TEMPLATE" {
+        return (
+            false,
+            (foo.1.calc)(input),
+            "Invalid Conversion".to_string(),
+            "Could not find conversion for k2".to_string(),
+        );
+    }
+    return (true, (foo.1.calc)(input), title.to_string(), foo.1.text);
 }
 
 fn remove_si(key: String) -> (String, f32) {
-    let mut foo: &String = &key;
     // key.replace("k".to_string(), "");
     let prefixes: Vec<types::Prefix> = vec![
         types::Prefix {
