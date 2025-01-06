@@ -6,7 +6,7 @@ pub fn units() -> Vec<types::Unit> {
         types::Unit {
             name: "Second".to_string(),
             names: get_values("time_s".to_string()),
-            can_use_si: false,
+            can_use_si: true,
             conversions: vec![
                 types::Conversion {
                     name: "Minute".to_string(),
@@ -111,7 +111,7 @@ pub fn units() -> Vec<types::Unit> {
                     names: get_values("time_s".to_string()),
                     text: "x*60".to_string(),
                     calc: |x| x * 60.0,
-                    can_use_si: false,
+                    can_use_si: true,
                 },
                 types::Conversion {
                     name: "Hour".to_string(),
@@ -209,7 +209,7 @@ pub fn units() -> Vec<types::Unit> {
                     names: get_values("time_s".to_string()),
                     text: "x*3600".to_string(),
                     calc: |x| x * 3600.0,
-                    can_use_si: false,
+                    can_use_si: true,
                 },
                 types::Conversion {
                     name: "Minute".to_string(),
@@ -307,7 +307,7 @@ pub fn units() -> Vec<types::Unit> {
                     names: get_values("time_s".to_string()),
                     text: "x*86400".to_string(),
                     calc: |x| x * 86400.0,
-                    can_use_si: false,
+                    can_use_si: true,
                 },
                 types::Conversion {
                     name: "Minute".to_string(),
@@ -405,7 +405,7 @@ pub fn units() -> Vec<types::Unit> {
                     names: get_values("time_s".to_string()),
                     text: "x*604800".to_string(),
                     calc: |x| x * 604800.0,
-                    can_use_si: false,
+                    can_use_si: true,
                 },
                 types::Conversion {
                     name: "Minute".to_string(),
@@ -503,7 +503,7 @@ pub fn units() -> Vec<types::Unit> {
                     names: get_values("time_s".to_string()),
                     text: "x*604800*2".to_string(),
                     calc: |x| x * 604800.0 * 2.0,
-                    can_use_si: false,
+                    can_use_si: true,
                 },
                 types::Conversion {
                     name: "Minute".to_string(),
@@ -601,7 +601,7 @@ pub fn units() -> Vec<types::Unit> {
                     names: get_values("time_s".to_string()),
                     text: "x*2628002.88".to_string(),
                     calc: |x| x * 2628002.88,
-                    can_use_si: false,
+                    can_use_si: true,
                 },
                 types::Conversion {
                     name: "Minute".to_string(),
@@ -699,7 +699,7 @@ pub fn units() -> Vec<types::Unit> {
                     names: get_values("time_s".to_string()),
                     text: "x*86400*40".to_string(),
                     calc: |x| x * 86400.0 * 40.0,
-                    can_use_si: false,
+                    can_use_si: true,
                 },
                 types::Conversion {
                     name: "Minute".to_string(),
@@ -797,7 +797,7 @@ pub fn units() -> Vec<types::Unit> {
                     names: get_values("time_s".to_string()),
                     text: "x*31557600".to_string(),
                     calc: |x| x * 31557600.0,
-                    can_use_si: false,
+                    can_use_si: true,
                 },
                 types::Conversion {
                     name: "Minute".to_string(),
@@ -895,7 +895,7 @@ pub fn units() -> Vec<types::Unit> {
                     names: get_values("time_s".to_string()),
                     text: "x*31557600*10".to_string(),
                     calc: |x| x * 31557600.0 * 10.0,
-                    can_use_si: false,
+                    can_use_si: true,
                 },
                 types::Conversion {
                     name: "Minute".to_string(),
@@ -993,7 +993,7 @@ pub fn units() -> Vec<types::Unit> {
                     names: get_values("time_s".to_string()),
                     text: "x*31557600*100".to_string(),
                     calc: |x| x * 31557600.0 * 100.0,
-                    can_use_si: false,
+                    can_use_si: true,
                 },
                 types::Conversion {
                     name: "Minute".to_string(),
@@ -1091,7 +1091,7 @@ pub fn units() -> Vec<types::Unit> {
                     names: get_values("time_s".to_string()),
                     text: "x*31557600*1e3".to_string(),
                     calc: |x| x * 31557600.0 * 1e3,
-                    can_use_si: false,
+                    can_use_si: true,
                 },
                 types::Conversion {
                     name: "Minute".to_string(),
@@ -1189,7 +1189,7 @@ pub fn units() -> Vec<types::Unit> {
                     names: get_values("time_s".to_string()),
                     text: "x*31557600*1e6".to_string(),
                     calc: |x| x * 31557600.0 * 1e6,
-                    can_use_si: false,
+                    can_use_si: true,
                 },
                 types::Conversion {
                     name: "Minute".to_string(),
@@ -1287,7 +1287,7 @@ pub fn units() -> Vec<types::Unit> {
                     names: get_values("time_s".to_string()),
                     text: "x*31557600*1e9".to_string(),
                     calc: |x| x * 31557600.0 * 1e9,
-                    can_use_si: false,
+                    can_use_si: true,
                 },
                 types::Conversion {
                     name: "Minute".to_string(),
