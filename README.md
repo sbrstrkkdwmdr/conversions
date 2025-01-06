@@ -24,7 +24,7 @@ months have a value of 30.437 days and years are 365.25 days
 | Rnergy      | xyz                                                                                                  |
 | Mass        | Gram, Ounce, Pound, Stone, US Ton, Metric Tonne                                                      |
 | Power       | xyz                                                                                                  |
-| Pressure    | xyz                                                                                                  |
+| Pressure    | Pascal, mmHg, PSI, Bar, Standard Atmosphere                                                          |
 | Speed       | xyz                                                                                                  |
 | Temperature | Celsius, Fahrenheit, Kelvin                                                                          |
 | Time        | Second, Minute, Hour, Day, Week, Fortnight, Month, Quarantine, Year, Decade, Century, Megaannum, Eon |
