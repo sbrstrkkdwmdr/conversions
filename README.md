@@ -21,7 +21,7 @@ months have a value of 30.437 days and years are 365.25 days
 | Angle       | xyz                                                                                                  |
 | Area        | xyz                                                                                                  |
 | Distance    | Inch, Foot, Metre, Mile, AU, LY, Parsec                                                              |
-| Rnergy      | xyz                                                                                                  |
+| Rnergy      | Electron-Volt, Joule, Calorie, BTU, Watt-Hour                                                                                                  |
 | Mass        | Gram, Ounce, Pound, Stone, US Ton, Metric Tonne                                                      |
 | Power       | xyz                                                                                                  |
 | Pressure    | Pascal, mmHg, PSI, Bar, Standard Atmosphere                                                          |
