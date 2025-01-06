@@ -8,16 +8,16 @@ fn main() {
 
     let mut key1 = String::new();
     let mut key2 = String::new();
-    let mut valueString: String = String::new();
+    let mut value_string: String = String::new();
 
     println!("{}", "\nPlease enter the first unit:");
     std::io::stdin().read_line(&mut key1).unwrap();
     println!("{}", "\nPlease enter the second unit:");
     std::io::stdin().read_line(&mut key2).unwrap();
     println!("{}", "\nPlease enter the value to convert:");
-    std::io::stdin().read_line(&mut valueString).unwrap();
+    std::io::stdin().read_line(&mut value_string).unwrap();
 
-    let value: f32 = valueString.trim().parse().unwrap();
+    let value: f32 = value_string.trim().parse().unwrap();
 
     key1 = key1.trim().to_string();
     key2 = key2.trim().to_string();
