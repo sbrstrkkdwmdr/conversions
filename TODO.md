@@ -3,7 +3,7 @@
 - [ ] SI prefix conversions
 - [ ] angle
 - [ ] area
-- [ ] distance
+- [x] distance
 - [ ] energy
 - [ ] mass
 - [ ] power
