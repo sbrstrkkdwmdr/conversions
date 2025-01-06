@@ -27,5 +27,5 @@ months have a value of 30.437 days and years are 365.25 days
 | Pressure    | xyz                                                                                                  |
 | Speed       | xyz                                                                                                  |
 | Temperature | Celsius, Fahrenheit, Kelvin                                                                          |
-| Time        | second, minute, hour, day, week, fortnight, month, quarintine, year, decade, century, megaannum, eon |
-| Volume      | xyz                                                                                                  |
+| Time        | Second, Minute, Hour, Day, Week, Fortnight, Month, Quarantine, Year, Decade, Century, Megaannum, Eon |
+| Volume      | Teaspoon, Tablespoon, Fluid Ounce, Cup, Pint, Litre, Gallon, Cubic Metre                                                                                                  |
