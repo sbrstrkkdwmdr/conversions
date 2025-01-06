@@ -18,7 +18,7 @@ months have a value of 30.437 days and years are 365.25 days
 
 | Type        | Units                                                                                                  |
 | ----------- | ------------------------------------------------------------------------------------------------------ |
-| Angle       | xyz                                                                                                    |
+| Angle       | Gradian, Degree, Radian                                                                                |
 | Area        | Square Inch , Square Foot, Square Metre, Acre, Hectare, Square Kilometre, Square mile                  |
 | Distance    | Inch, Foot, Metre, Mile, AU, LY, Parsec                                                                |
 | Rnergy      | Electron-Volt, Joule, Calorie, BTU, Watt-Hour                                                          |
