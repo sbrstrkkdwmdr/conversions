@@ -9,7 +9,7 @@ fn main() {
     let mut key1 = String::new();
     let mut key2 = String::new();
     let mut valueString: String = String::new();
-    
+
     println!("{}", "\nPlease enter the first unit:");
     std::io::stdin().read_line(&mut key1).unwrap();
     println!("{}", "\nPlease enter the second unit:");
@@ -17,7 +17,6 @@ fn main() {
     println!("{}", "\nPlease enter the value to convert:");
     std::io::stdin().read_line(&mut valueString).unwrap();
 
-    
     let value: f32 = valueString.trim().parse().unwrap();
 
     key1 = key1.trim().to_string();
@@ -78,7 +77,7 @@ fn convert(key_one: String, key_two: String, input: f32) -> (bool, f32, String, 
     if foo.0.name == "TEMPLATE" {
         return (
             false,
-            (foo.1.calc)(input),
+            bar,
             "Invalid Conversion".to_string(),
             "Could not find conversion for k1".to_string(),
         );
@@ -86,12 +85,12 @@ fn convert(key_one: String, key_two: String, input: f32) -> (bool, f32, String, 
     if foo.1.name == "TEMPLATE" {
         return (
             false,
-            (foo.1.calc)(input),
+            bar,
             "Invalid Conversion".to_string(),
             "Could not find conversion for k2".to_string(),
         );
     }
-    return (true, (foo.1.calc)(input), title.to_string(), foo.1.text);
+    return (true, bar, title.to_string(), foo.1.text);
 }
 
 fn remove_si(key: String) -> (String, f32) {
