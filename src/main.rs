@@ -61,8 +61,8 @@ fn convert(key_one: String, key_two: String, input: f32) -> (bool, f32, String, 
 
     let foo = units::get_unit(k1.0, k2.0);
     let mut bar = (foo.1.calc)(input);
-    let mut f1: String = foo.0.name.to_string();
-    let mut f2: String = foo.1.name.to_string();
+    let mut f1: String = foo.0.names[0].to_string();
+    let mut f2: String = foo.1.names[0].to_string();
     let mut equation = "(".to_owned() + &foo.1.text + &")";
     if foo.0.can_use_si && k1.2.name.len() > 0 {
         bar *= k1.1;
@@ -77,7 +77,7 @@ fn convert(key_one: String, key_two: String, input: f32) -> (bool, f32, String, 
     let mut title = f1.to_string();
     title.push_str(" -> ");
     title.push_str(&f2);
-    if foo.0.name == "TEMPLATE" {
+    if foo.0.names[0] == "TEMPLATE" {
         return (
             false,
             bar,
@@ -85,7 +85,7 @@ fn convert(key_one: String, key_two: String, input: f32) -> (bool, f32, String, 
             "Could not find conversion for k1".to_string(),
         );
     }
-    if foo.1.name == "TEMPLATE" {
+    if foo.1.names[0] == "TEMPLATE" {
         return (
             false,
             bar,
@@ -269,7 +269,7 @@ fn parse_args(args: Vec<String>) -> (String, String, String, String) {
             let category = (&unit.0.split("_").collect::<Vec<&str>>()[0]).to_string();
             let text = &unit.1[0];
             if &curcat != &category {
-                t.push_str("\n---");
+                t.push_str("\n\n---");
                 t.push_str(get_category(&category));
                 t.push_str("---\n");
             }

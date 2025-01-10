@@ -48,7 +48,8 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         (
             "dist_in".to_string(),
             vec![
-                String::from("Inch"),
+                String::from("Inches"),
+                String::from("inch"),
                 String::from("in"),
                 String::from("'"),
                 String::from("`"),
@@ -68,71 +69,97 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         (
             "dist_m".to_string(),
             vec![
-                String::from("Metre"),
+                String::from("Metres"),
                 String::from("m"),
-                String::from("Meter"),
-            ],
-        ),
-        (
-            "dist_footfield".to_string(),
-            vec![
-                String::from("Football Field"),
-                String::from("ff"),
-                String::from("footballfield"),
+                String::from("metre"),
+                String::from("meter"),
+                String::from("meters"),
             ],
         ),
         (
             "dist_mi".to_string(),
-            vec![String::from("Mile"), String::from("mi")],
+            vec![
+                String::from("Miles"),
+                String::from("mi"),
+                String::from("mile"),
+            ],
         ),
         (
             "dist_au".to_string(),
-            vec![String::from("Astronomical Unit"), String::from("au")],
+            vec![
+                String::from("Astronomical Units"),
+                String::from("au"),
+                String::from("astronomical unit"),
+            ],
         ),
         (
             "dist_ly".to_string(),
-            vec![String::from("Light Year"), String::from("ly")],
+            vec![
+                String::from("Light Years"),
+                String::from("ly"),
+                String::from("Light Year"),
+            ],
         ),
         (
             "dist_pc".to_string(),
-            vec![String::from("Parsec"), String::from("pc")],
+            vec![
+                String::from("Parsecs"),
+                String::from("pc"),
+                String::from("Parsec"),
+            ],
         ),
         (
             "time_s".to_string(),
             vec![
-                String::from("Second"),
+                String::from("Seconds"),
                 String::from("s"),
+                String::from("Second"),
                 String::from("sec"),
             ],
         ),
         (
             "time_min".to_string(),
-            vec![String::from("Minute"), String::from("min")],
+            vec![
+                String::from("Minutes"),
+                String::from("min"),
+                String::from("Minute"),
+            ],
         ),
         (
             "time_hr".to_string(),
-            vec![String::from("Hour"), String::from("h"), String::from("hr")],
+            vec![
+                String::from("Hours"),
+                String::from("h"),
+                String::from("Hour"),
+                String::from("hr"),
+            ],
         ),
         (
             "time_d".to_string(),
-            vec![String::from("Day"), String::from("d")],
+            vec![String::from("Day"), String::from("Days"), String::from("d")],
         ),
         (
             "time_wk".to_string(),
             vec![
                 String::from("Week"),
+                String::from("Weeks"),
                 String::from("wk"),
                 String::from("sennight"),
             ],
         ),
         (
             "time_fn".to_string(),
-            vec![String::from("Fortnight"), String::from("fn")],
+            vec![
+                String::from("Fortnight"),
+                String::from("Fortnights"),
+                String::from("fn"),
+            ],
         ),
         (
             "time_mth".to_string(),
             vec![
                 String::from("Month"),
+                String::from("Months"),
                 String::from("mth"),
                 String::from("mon"),
             ],
@@ -141,48 +168,85 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
             "time_qua".to_string(),
             vec![
                 String::from("Quarantine"),
+                String::from("Quarantines"),
                 String::from("quarantina"),
                 String::from("quarentine"),
             ],
         ),
         (
             "time_yr".to_string(),
-            vec![String::from("Year"), String::from("yr")],
+            vec![
+                String::from("Year"),
+                String::from("Years"),
+                String::from("yr"),
+            ],
         ),
-        ("time_dec".to_string(), vec![String::from("Decade")]),
+        (
+            "time_dec".to_string(),
+            vec![
+                String::from("Decades"),
+                String::from("Decade"),
+                String::from("dec"),
+            ],
+        ),
         (
             "time_cen".to_string(),
-            vec![String::from("Century"), String::from("cent")],
+            vec![
+                String::from("Centuries"),
+                String::from("Century"),
+                String::from("cent"),
+            ],
         ),
         (
             "time_mil".to_string(),
-            vec![String::from("Millennium"), String::from("Millennia")],
+            vec![String::from("Millennia"), String::from("Millennium")],
         ),
         ("time_ma".to_string(), vec![String::from("Megaannum")]),
-        ("time_eon".to_string(), vec![String::from("Eon")]),
+        (
+            "time_eon".to_string(),
+            vec![String::from("Eons"), String::from("Eon")],
+        ),
         (
             "vol_tsp".to_string(),
-            vec![String::from("Teaspoon"), String::from("tsp")],
+            vec![
+                String::from("Teaspoons"),
+                String::from("Teaspoon"),
+                String::from("tsp"),
+            ],
         ),
         (
             "vol_tbp".to_string(),
-            vec![String::from("Tablespoon"), String::from("tbp")],
+            vec![
+                String::from("Tablespoons"),
+                String::from("Tablespoon"),
+                String::from("tbp"),
+            ],
         ),
         (
             "vol_floz".to_string(),
-            vec![String::from("Fluid Ounce"), String::from("floz")],
+            vec![
+                String::from("Fluid Ounces"),
+                String::from("Fluid Ounce"),
+                String::from("floz"),
+            ],
         ),
         (
             "vol_c".to_string(),
-            vec![String::from("Cup"), String::from("c")],
+            vec![String::from("Cups"), String::from("Cup"), String::from("c")],
         ),
         (
             "vol_pt".to_string(),
-            vec![String::from("Pint"), String::from("pt")],
+            vec![
+                String::from("Pints"),
+                String::from("Pint"),
+                String::from("pt"),
+            ],
         ),
         (
             "vol_l".to_string(),
             vec![
+                String::from("Litres"),
+                String::from("Liters"),
                 String::from("Litre"),
                 String::from("Liter"),
                 String::from("L"),
@@ -190,11 +254,16 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         ),
         (
             "vol_gal".to_string(),
-            vec![String::from("Galloon"), String::from("gal")],
+            vec![
+                String::from("Gallons"),
+                String::from("Gallon"),
+                String::from("gal"),
+            ],
         ),
         (
             "vol_m3".to_string(),
             vec![
+                String::from("Cubic Metres"),
                 String::from("Cubic Metre"),
                 String::from("m³"),
                 String::from("m3"),
@@ -203,23 +272,40 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         ),
         (
             "mass_g".to_string(),
-            vec![String::from("Gram"), String::from("g")],
+            vec![
+                String::from("Grams"),
+                String::from("Gram"),
+                String::from("g"),
+            ],
         ),
         (
             "mass_oz".to_string(),
-            vec![String::from("Ounce"), String::from("oz")],
+            vec![
+                String::from("Ounces"),
+                String::from("Ounce"),
+                String::from("oz"),
+            ],
         ),
         (
             "mass_lb".to_string(),
-            vec![String::from("Pound"), String::from("lb")],
+            vec![
+                String::from("Pounds"),
+                String::from("Pound"),
+                String::from("lb"),
+            ],
         ),
         (
             "mass_st".to_string(),
-            vec![String::from("Stone"), String::from("st")],
+            vec![
+                String::from("Stone"),
+                String::from("Stones"),
+                String::from("st"),
+            ],
         ),
         (
             "mass_t".to_string(),
             vec![
+                String::from("US Tons"),
                 String::from("US Ton"),
                 String::from("t"),
                 String::from("Ton"),
@@ -228,6 +314,7 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         (
             "mass_mt".to_string(),
             vec![
+                String::from("Metric Tonnes"),
                 String::from("Metric Tonne"),
                 String::from("mt"),
                 String::from("Tonne"),
@@ -236,6 +323,7 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         (
             "pres_pa".to_string(),
             vec![
+                String::from("Pascals"),
                 String::from("Pascal"),
                 String::from("Pa"),
                 String::from("N m² ⁻¹"),
@@ -249,18 +337,21 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
             vec![
                 String::from("mmHg"),
                 String::from("millimetre of Mercury"),
+                String::from("millimetres of Mercury"),
                 String::from("Torr"),
                 String::from("millimeter of Mercury"),
+                String::from("millimeters of Mercury"),
             ],
         ),
         (
             "pres_psi".to_string(),
-            vec![String::from("Pounds per square inch"), String::from("psi")],
+            vec![String::from("psi"), String::from("Pounds per square inch")],
         ),
         ("pres_bar".to_string(), vec![String::from("Bar")]),
         (
             "pres_atm".to_string(),
             vec![
+                String::from("Standard Atmospheres"),
                 String::from("Standard Atmosphere"),
                 String::from("atm"),
                 String::from("Atmosphere"),
@@ -270,6 +361,7 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         (
             "nrg_ev".to_string(),
             vec![
+                String::from("Electron Volts"),
                 String::from("Electron Volt"),
                 String::from("eV"),
                 String::from("Electronvolt"),
@@ -277,23 +369,43 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         ),
         (
             "nrg_j".to_string(),
-            vec![String::from("Joule"), String::from("j")],
+            vec![
+                String::from("Joules"),
+                String::from("Joule"),
+                String::from("j"),
+            ],
         ),
         (
             "nrg_cal".to_string(),
-            vec![String::from("Calorie"), String::from("cal")],
+            vec![
+                String::from("Calories"),
+                String::from("Calorie"),
+                String::from("cal"),
+            ],
         ),
         (
             "nrg_btu".to_string(),
-            vec![String::from("British Thermal Unit"), String::from("btu")],
+            vec![
+                String::from("British Thermal Units"),
+                String::from("British Thermal Unit"),
+                String::from("btu"),
+            ],
         ),
         (
             "nrg_wh".to_string(),
-            vec![String::from("Watt Hour"), String::from("wH")],
+            vec![
+                String::from("Watt Hours"),
+                String::from("Watt Hour"),
+                String::from("wH"),
+            ],
         ),
         (
             "pow_w".to_string(),
-            vec![String::from("Watt"), String::from("w")],
+            vec![
+                String::from("Watts"),
+                String::from("Watt"),
+                String::from("w"),
+            ],
         ),
         (
             "pow_horse".to_string(),
@@ -348,6 +460,7 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         (
             "area_in2".to_string(),
             vec![
+                String::from("Square inches"),
                 String::from("Square inch"),
                 String::from("in²"),
                 String::from("in2"),
@@ -357,6 +470,7 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         (
             "area_ft2".to_string(),
             vec![
+                String::from("Square feet"),
                 String::from("Square foot"),
                 String::from("ft²"),
                 String::from("ft2"),
@@ -366,6 +480,7 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         (
             "area_m2".to_string(),
             vec![
+                String::from("Square metres"),
                 String::from("Square metre"),
                 String::from("m²"),
                 String::from("m2"),
@@ -374,15 +489,24 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         ),
         (
             "area_ac".to_string(),
-            vec![String::from("Acre"), String::from("ac")],
+            vec![
+                String::from("Acres"),
+                String::from("Acre"),
+                String::from("ac"),
+            ],
         ),
         (
             "area_ha".to_string(),
-            vec![String::from("Hectare"), String::from("Ha")],
+            vec![
+                String::from("Hectares"),
+                String::from("Hectare"),
+                String::from("Ha"),
+            ],
         ),
         (
             "area_km2".to_string(),
             vec![
+                String::from("Square kilometres"),
                 String::from("Square kilometre"),
                 String::from("km²"),
                 String::from("km2"),
@@ -392,6 +516,7 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         (
             "area_mi2".to_string(),
             vec![
+                String::from("Square miles"),
                 String::from("Square mile"),
                 String::from("mi²"),
                 String::from("mi2"),
@@ -400,15 +525,27 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         ),
         (
             "angle_grad".to_string(),
-            vec![String::from("Gradian"), String::from("grad")],
+            vec![
+                String::from("Gradians"),
+                String::from("Gradian"),
+                String::from("grad"),
+            ],
         ),
         (
             "angle_deg".to_string(),
-            vec![String::from("Degree"), String::from("deg")],
+            vec![
+                String::from("Degrees"),
+                String::from("Degree"),
+                String::from("deg"),
+            ],
         ),
         (
             "angle_rad".to_string(),
-            vec![String::from("Radian"), String::from("rad")],
+            vec![
+                String::from("Radians"),
+                String::from("Radian"),
+                String::from("rad"),
+            ],
         ),
         (
             "speed_kmh".to_string(),
@@ -434,6 +571,7 @@ pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
         (
             "speed_kt".to_string(),
             vec![
+                String::from("Knots"),
                 String::from("Knot"),
                 String::from("kt"),
                 String::from("nmi h⁻¹"),
@@ -484,10 +622,10 @@ pub fn get_unit(key: String, second_key: String) -> (types::Unit, types::Convers
         }
     }
     for unit in unit_list {
-        print!("{}", "finding conversions for: ");
-        println!("{}", unit.name);
+        // print!("{}", "finding conversions for: ");
+        // println!("{}", unit.names[1]);
         let test = get_calculation(&second_key, &unit);
-        if test.name != "TEMPLATE".to_string() {
+        if test.names[0] != "TEMPLATE".to_string() {
             return (unit, test);
         }
     }
@@ -521,37 +659,37 @@ fn get_unit_via_list(key: &String) -> Vec<types::Unit> {
     let time = get_unit_second(key, time::units());
     let volume = get_unit_second(key, volume::units());
 
-    if angle.name != bar {
+    if angle.names[0] != bar {
         foo.push(angle);
     }
-    if area.name != bar {
+    if area.names[0] != bar {
         foo.push(area);
     }
-    if distance.name != bar {
+    if distance.names[0] != bar {
         foo.push(distance);
     }
-    if energy.name != bar {
+    if energy.names[0] != bar {
         foo.push(energy);
     }
-    if mass.name != bar {
+    if mass.names[0] != bar {
         foo.push(mass);
     }
-    if power.name != bar {
+    if power.names[0] != bar {
         foo.push(power);
     }
-    if pressure.name != bar {
+    if pressure.names[0] != bar {
         foo.push(pressure);
     }
-    if speed.name != bar {
+    if speed.names[0] != bar {
         foo.push(speed);
     }
-    if temperature.name != bar {
+    if temperature.names[0] != bar {
         foo.push(temperature);
     }
-    if time.name != bar {
+    if time.names[0] != bar {
         foo.push(time);
     }
-    if volume.name != bar {
+    if volume.names[0] != bar {
         foo.push(volume);
     }
     return foo;
@@ -562,8 +700,8 @@ fn get_calculation(key: &String, unit: &types::Unit) -> types::Conversion {
     for conversion in bar {
         for name in &conversion.names {
             if &name.to_lowercase() == &key.to_lowercase() {
-                print!("{}", "found: ");
-                println!("{}", conversion.name);
+                // print!("{}", "found: ");
+                // println!("{}", conversion.names[0]);
                 return conversion.clone();
             }
         }
