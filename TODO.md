@@ -1,15 +1,15 @@
 # TODO
 
-- [ ] simplify some equations
-- [ ] SI prefix conversions
-- [ ] angle
-- [ ] area
+- [ ] different input methods eg. (main.exe -i "unit" -o "unit" -v 727)
+- [x] SI prefix conversions
+- [x] angle
+- [x] area
 - [x] distance
-- [ ] energy
-- [ ] mass
-- [ ] power
-- [ ] pressure
-- [ ] speed
+- [x] energy
+- [x] mass
+- [x] power
+- [x] pressure
+- [x] speed
 - [x] temperature
-- [ ] time
-- [ ] volume
+- [x] time
+- [x] volume

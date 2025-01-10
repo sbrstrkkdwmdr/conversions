@@ -581,3 +581,9 @@ pub fn valid_key(key: &String) -> bool {
     }
     return false;
 }
+
+pub fn key_can_use_si(key: &String) -> bool {
+    let units = get_unit_via_list(key);
+    return units[0].can_use_si;
+    // return true;
+}
