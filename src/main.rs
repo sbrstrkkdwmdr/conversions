@@ -1,26 +1,22 @@
+use std::env;
 mod types;
 // use types::Unit;
 mod units;
 // use types;
 
 fn main() {
-    println!("Hello, world!");
+    let args: Vec<_> = env::args().collect();
+    let parsed = parse_args(args);
+    if parsed.3.len() > 0 {
+        println!("{}", parsed.3);
+        return;
+    }
 
-    let mut key1 = String::new();
-    let mut key2 = String::new();
-    let mut value_string: String = String::new();
-
-    println!("{}", "\nPlease enter the first unit:");
-    std::io::stdin().read_line(&mut key1).unwrap();
-    println!("{}", "\nPlease enter the second unit:");
-    std::io::stdin().read_line(&mut key2).unwrap();
-    println!("{}", "\nPlease enter the value to convert:");
-    std::io::stdin().read_line(&mut value_string).unwrap();
+    let key1 = parsed.0;
+    let key2 = parsed.1;
+    let value_string = parsed.2;
 
     let value: f32 = value_string.trim().parse().unwrap();
-
-    key1 = key1.trim().to_string();
-    key2 = key2.trim().to_string();
 
     println!("{}", "");
     println!("{}", "");
@@ -68,12 +64,12 @@ fn convert(key_one: String, key_two: String, input: f32) -> (bool, f32, String, 
     let mut f1: String = foo.0.name.to_string();
     let mut f2: String = foo.1.name.to_string();
     let mut equation = "(".to_owned() + &foo.1.text + &")";
-    if foo.0.can_use_si && k1.2.name.len() > (0 as usize) {
+    if foo.0.can_use_si && k1.2.name.len() > 0 {
         bar *= k1.1;
         f1 = k1.2.name + &f1.to_lowercase();
         equation += &(" * ".to_owned() + &k1.1.to_string());
     }
-    if foo.1.can_use_si && k2.2.name.len() > (0 as usize) {
+    if foo.1.can_use_si && k2.2.name.len() > 0 {
         bar /= k2.1;
         f2 = k2.2.name + &f2.to_lowercase();
         equation += &(" / ".to_owned() + &k2.1.to_string());
@@ -250,4 +246,119 @@ fn remove_si(key: String) -> (String, f32, types::Prefix) {
             value: 1.0,
         },
     );
+}
+
+fn parse_args(args: Vec<String>) -> (String, String, String, String) {
+    if args.len() <= 1 {
+        return ("".to_owned(),"".to_owned(),"".to_owned(),"Error - missing required args!\nPlease use the following format:\n`main.exe -i [input unit] -o [output unit] -v`\nEg. main.exe -i metre -o foot -v 1.5`\n`Arguments can be in any order".to_owned());
+    }
+    if has_arg("--v".to_owned(), (&args).to_owned()) || has_arg("--version".to_owned(), (&args).to_owned()) || has_arg("-version".to_owned(), (&args).to_owned()) {
+        return (
+            "".to_owned(),
+            "".to_owned(),
+            "".to_owned(),
+            "Current version\n1.0.0".to_owned(),
+        );
+    }
+    if has_arg("-list".to_owned(), (&args).to_owned()) {
+        let mut t = "List of units".to_owned();
+        let units = units::get_unit_names();
+
+        let mut curcat = "".to_owned();
+        for unit in units {
+            let category = (&unit.0.split("_").collect::<Vec<&str>>()[0]).to_string();
+            let text = &unit.1[0];
+            if &curcat != &category {
+                t.push_str("\n---");
+                t.push_str(get_category(&category));
+                t.push_str("---\n");
+            }
+            curcat = category;
+            t.push_str(text);
+            t.push_str(", ");
+        }
+        return ("".to_owned(), "".to_owned(), "".to_owned(), t);
+    }
+    // get input
+    // -i, -input
+    let input = get_arg("-i", (&args).to_owned());
+    //get output
+    // -o, -output
+    let output = get_arg("-o", (&args).to_owned());
+
+    //get value
+    // -v, -value, -n, -number
+    let val = get_arg("-v", (&args).to_owned());
+    return (input, output, val, "".to_owned());
+}
+
+fn get_arg(key: &str, args: Vec<String>) -> String {
+    let mut i = 0;
+    for arg in &args {
+        if arg == &key {
+            if (&args[i + 1]).starts_with("\"") {
+                let temp = &args.join(" ");
+                let haystack = temp.split('"');
+                for needle in haystack {
+                    if needle.starts_with(&args[i + 1]) {
+                        return needle.to_string();
+                    }
+                }
+            } else {
+                return (&args[i + 1]).to_string();
+            }
+        }
+        i += 1;
+    }
+    return "".to_string();
+}
+
+fn has_arg(key: String, args: Vec<String>) -> bool {
+    for arg in &args {
+        if arg == &key {
+            return true;
+        }
+    }
+    return false;
+}
+
+fn get_category(key: &str) -> &str {
+    match key {
+        "angle" => {
+            return "Angle";
+        }
+        "area" => {
+            return "Area";
+        }
+        "dist" => {
+            return "Distance";
+        }
+        "mass" => {
+            return "Mass";
+        }
+        "nrg" => {
+            return "Energy";
+        }
+        "pow" => {
+            return "Power";
+        }
+        "pres" => {
+            return "Pressure";
+        }
+        "speed" => {
+            return "Speed";
+        }
+        "temp" => {
+            return "Temperature";
+        }
+        "time" => {
+            return "Time";
+        }
+        "vol" => {
+            return "Volume";
+        }
+        _ => {
+            return key;
+        }
+    }
 }

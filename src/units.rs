@@ -1,5 +1,6 @@
 use crate::types::{self};
-use std::collections::HashMap;
+// use std::collections::HashMap;
+use std::collections::BTreeMap;
 
 pub mod angle;
 pub mod area;
@@ -13,8 +14,8 @@ pub mod temperature;
 pub mod time;
 pub mod volume;
 
-fn get_unit_names() -> HashMap<String, Vec<String>> {
-    let t: HashMap<String, Vec<String>> = HashMap::from([
+pub fn get_unit_names() -> BTreeMap<String, Vec<String>> {
+    let t: BTreeMap<String, Vec<String>> = BTreeMap::from([
         (
             "temp_c".to_string(),
             vec![
@@ -246,8 +247,8 @@ fn get_unit_names() -> HashMap<String, Vec<String>> {
         (
             "pres_mmHg".to_string(),
             vec![
-                String::from("millimetre of Mercury"),
                 String::from("mmHg"),
+                String::from("millimetre of Mercury"),
                 String::from("Torr"),
                 String::from("millimeter of Mercury"),
             ],
